@@ -26,19 +26,6 @@
                             <th>ACTION</th>
                           </tr>
                         </thead>
-                        <tfoot>
-                          <tr>
-                            <th>Tanggal Permohonan</th>
-                            <th>Nama Pemohon</th>
-                            <th>NIP</th>
-                            <th>Bagian</th>
-                            <th>Sistem Akses</th>
-                            <th>Alasan Akses</th>
-                            <th>Tingkat Akses</th>
-                            <th>Status</th>
-                            <th>ACTION</th>
-                          </tr>
-                        </tfoot>
                         <tbody>
                           @foreach ($data as $d)
                             <tr>

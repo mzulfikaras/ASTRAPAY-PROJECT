@@ -24,18 +24,6 @@
                             <th>ACTION</th>
                           </tr>
                         </thead>
-                        <tfoot>
-                          <tr>
-                            <th>Tanggal Permohonan</th>
-                            <th>Nama Pemohon</th>
-                            <th>Dasar Permohonan</th>
-                            <th>Nama Informasi / Data</th>
-                            <th>Tujuan Restore</th>
-                            <th>Rencana Pemulihan</th>
-                            <th>Status</th>
-                            <th>ACTION</th>
-                          </tr>
-                        </tfoot>
                         <tbody>
                           @foreach ($data as $d)
                             <tr>

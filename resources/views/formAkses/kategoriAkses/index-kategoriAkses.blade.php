@@ -21,11 +21,6 @@
                           </tr>
                         </thead>
                         <tfoot>
-                          <tr>
-                            <th>Kategori Akses</th>
-                            <th>ACTION</th>
-                          </tr>
-                        </tfoot>
                         <tbody>
                           @foreach ($kategori as $k)
                             <tr>

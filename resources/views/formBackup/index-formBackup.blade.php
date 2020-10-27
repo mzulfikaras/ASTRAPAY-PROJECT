@@ -24,14 +24,6 @@
                             <th>ACTION</th>
                           </tr>
                         </thead>
-                        <tfoot>
-                          <tr>
-                            <th>Nama Informasi</th>
-                            <th>Metode Backup</th>
-                            <th>Periode Backup</th>
-                            <th>ACTION</th>
-                          </tr>
-                        </tfoot>
                         <tbody>
                           @foreach ($data as $d)
                             <tr>

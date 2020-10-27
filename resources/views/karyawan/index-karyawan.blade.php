@@ -24,15 +24,6 @@
                             {{-- <th>ACTION</th> --}}
                           </tr>
                         </thead>
-                        <tfoot>
-                          <tr>
-                            <th>NAME</th>
-                            <th>EMAIL</th>
-                            <th>NIP</th>
-                            <th>PASSWORD</th>
-                            {{-- <th>ACTION</th> --}}
-                          </tr>
-                        </tfoot>
                         <tbody>
                           @foreach ($karyawan as $k)
                             <tr>
