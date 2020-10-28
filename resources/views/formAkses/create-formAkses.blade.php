@@ -13,10 +13,19 @@
                     @csrf
 
                     <div class="form-row">
+                        <div class="name">Form Pemohonan</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" id="form_permohonan" name="form_permohonan" value="FORM AKSES" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
                         <div class="name">Tanggal Pemohonan</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="text" id="tanggal_permohonan" name="tanggal_permohonan" value="<?php echo date('d-M-Y')?>">
+                                <input class="input--style-5" type="text" id="tanggal_permohonan" name="tanggal_permohonan" value="<?php echo date('d-M-Y')?>" readonly>
                             </div>
                         </div>
                     </div>
@@ -30,7 +39,7 @@
                         <div class="name">Nama Pemohon</div>
                         <div class="value">
                             <div class="input-group">
-                            <input class="input--style-5" type="text" id="nama_pemohon" name="nama_pemohon" value="{{Auth::user()->name}}">
+                            <input class="input--style-5" type="text" id="nama_pemohon" name="nama_pemohon" value="{{Auth::user()->name}}" readonly>
                             </div>
                         </div>
                     </div>
@@ -45,7 +54,7 @@
                         <div class="name">NIP</div>
                         <div class="value">
                             <div class="input-group">
-                            <input class="input--style-5" type="text" id="nip" name="nip" value="{{Auth::user()->nip}}" >
+                            <input class="input--style-5" type="text" id="nip" name="nip" value="{{Auth::user()->nip}}" readonly>
                             </div>
                         </div>
                     </div>
@@ -114,13 +123,7 @@
                         <div class="name">Status</div>
                         <div class="value">
                             <div class="input-group">
-                                <div class="rs-select2 js-select-simple select--no-search">
-                                    <select name="status">
-                                        <option disabled="disabled" selected="selected">Pilih Status</option>
-                                        <option value="REQUEST">REQUEST</option>
-                                    </select>
-                                    <div class="select-dropdown"></div>
-                                </div>
+                                <input class="input--style-5" type="text" id="status" name="status" value="REQUEST" readonly>
                             </div>
                         </div>
                     </div>

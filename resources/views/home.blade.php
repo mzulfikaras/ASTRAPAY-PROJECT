@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
 
-    <title>Landing Page</title>
+    <title>HOME PAGE | PT ASTRA DIGITAL ARA</title>
 </head>
 
 
@@ -38,10 +38,7 @@
             <div class="col-10 info-panel">
                 <div class="row justify-content-center ">
                     <div class="col-lg-8">
-                    <h5 id="h5">
-                        <a href="{{route('create.user.formAkses')}}" class="btn btn-primary">Form Pengajuan Akses</a> - 
-                        <a href="{{route('create.user.formRestore')}}" class="btn btn-primary">Form Pengajuan Restore</a>
-                    </h5> 
+                    <h5 id="h5">HALAMAN KARYAWAN PT ASTRA DIGITAL</h5> 
                     </div>
                 </div>
             </div>

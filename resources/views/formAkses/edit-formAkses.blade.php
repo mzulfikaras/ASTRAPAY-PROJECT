@@ -9,8 +9,13 @@
                 @method('PUT')
 
                 <div class="form-group">
+                    <label for="form_permohonan">Form Permohonan</label>
+                    <input type="text" class="form-control" id="form_permohonan" name="form_permohonan" value="{{old('form_permohonan', $form_akse->form_permohonan)}}" readonly>
+                </div>
+
+                <div class="form-group">
                     <label for="tanggal_permohonan">Tanggal Permohonan</label>
-                    <input type="text" class="form-control" id="tanggal_permohonan" name="tanggal_permohonan" value="{{old('tanggal_permohonan', $form_akse->tanggal_permohonan)}}" disabled>
+                    <input type="text" class="form-control" id="tanggal_permohonan" name="tanggal_permohonan" value="{{old('tanggal_permohonan', $form_akse->tanggal_permohonan)}}" readonly>
                 </div>
 
                 @error('tanggal_permohonan')
@@ -21,12 +26,12 @@
 
                 <div class="form-group">
                     <label for="nama_pemohon">Nama Pemohon</label>
-                    <input type="text" class="form-control" id="nama_pemohon" name="nama_pemohon" value="{{old('nama_pemohon', $form_akse->nama_pemohon)}}">
+                    <input type="text" class="form-control" id="nama_pemohon" name="nama_pemohon" value="{{old('nama_pemohon', $form_akse->nama_pemohon)}}" readonly>
                 </div>
 
                 <div class="form-group">
                     <label for="nip">NIP</label>
-                    <input type="text" class="form-control" id="nip" name="nip" value="{{old('nip', $form_akse->nip)}}">
+                    <input type="text" class="form-control" id="nip" name="nip" value="{{old('nip', $form_akse->nip)}}" readonly>
                 </div>
 
                 @error('nip')

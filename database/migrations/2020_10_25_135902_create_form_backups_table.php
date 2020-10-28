@@ -15,9 +15,13 @@ class CreateFormBackupsTable extends Migration
     {
         Schema::create('form_backups', function (Blueprint $table) {
             $table->id();
+            $table->string('form_permohonan');
+            $table->char('tanggal_permohonan');
+            $table->string('nama_pemohon');
             $table->string('nama_informasi');
             $table->string('metode_backup');
             $table->string('periode_backup');
+            $table->string('status');
             $table->timestamps();
         });
     }

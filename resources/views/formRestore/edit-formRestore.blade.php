@@ -8,9 +8,15 @@
                 @csrf
                 @method('PUT')
 
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="form_permohonan">Form Permohonan</label>
+                        <input type="text" class="form-control" id="form_permohonan" name="form_permohonan" value="{{old('form_permohonan', $form_restore->form_permohonan)}}" readonly>
+                    </div>
+
                 <div class="form-group">
                     <label for="tanggal_permohonan">Tanggal Permohonan</label>
-                    <input type="text" class="form-control" id="tanggal_permohonan" name="tanggal_permohonan" value="{{old('tanggal_permohonan', $form_restore->tanggal_permohonan)}}">
+                    <input type="text" class="form-control" id="tanggal_permohonan" name="tanggal_permohonan" value="{{old('tanggal_permohonan', $form_restore->tanggal_permohonan)}}" readonly>
                 </div>
 
                 @error('tanggal_permohonan')
@@ -21,7 +27,7 @@
 
                 <div class="form-group">
                     <label for="nama_pemohon">Nama Pemohon</label>
-                    <input type="text" class="form-control" id="nama_pemohon" name="nama_pemohon" value="{{old('nama_pemohon', $form_restore->nama_pemohon)}}">
+                    <input type="text" class="form-control" id="nama_pemohon" name="nama_pemohon" value="{{old('nama_pemohon', $form_restore->nama_pemohon)}}" readonly>
                 </div>
 
                 <div class="form-group">

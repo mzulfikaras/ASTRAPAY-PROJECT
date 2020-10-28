@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 Route::get('admin/login', 'Auth\AdminAuthController@getLogin')->name('admin.login');
@@ -24,10 +24,13 @@ Route::get('admin/logout', 'Auth\AdminAuthController@postLogout')->name('admin.l
 
 Route::prefix('karyawan')->group( function(){
     Route::get('/home','FrontController@home')->name('home');
+    Route::get('/dashboard-karyawan','FrontController@dashboardKaryawan')->name('dashboard.karyawan')->middleware('auth');
     Route::get('/input-formAkses','FrontController@createFormAkses')->name('create.user.formAkses')->middleware('auth');
     Route::post('/input-formAkses','FrontController@storeFormAkses')->name('store.user.formAkses')->middleware('auth');
     Route::get('/input-formRestore','FrontController@createFormRestore')->name('create.user.formRestore')->middleware('auth');
     Route::post('/input-formRestore','FrontController@storeFormRestore')->name('store.user.formRestore')->middleware('auth');
+    Route::get('/input-formBackup','FrontController@createFormBackup')->name('create.user.formBackup')->middleware('auth');
+    Route::post('/input-formBackup','FrontController@storeFormBackup')->name('store.user.formBackup')->middleware('auth');
 });
 
 Route::prefix('admin')->middleware('auth:admin')->group( function(){
@@ -39,6 +42,7 @@ Route::prefix('admin')->middleware('auth:admin')->group( function(){
     Route::resource('/form-restore', 'FormRestoreController');
     Route::get('/formRestore-done','BackController@formRestoreDone')->name('formRestore.done');
     Route::resource('/form-backup', 'FormBackupController');
+    Route::get('/formBackup-done','BackController@formBackupDone')->name('formBackup.done');
     // Route::get('/internet-done','BackController@internetDone')->name('internet.done');
     // Route::resource('/server', 'RequestServerController');
     // Route::get('/server-done','BackController@serverDone')->name('server.done');

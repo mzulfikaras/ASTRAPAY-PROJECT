@@ -15,6 +15,7 @@ class CreateFormAksesTable extends Migration
     {
         Schema::create('form_akses', function (Blueprint $table) {
             $table->id();
+            $table->string('form_permohonan');
             $table->char('tanggal_permohonan');
             $table->string('nama_pemohon');
             $table->string('nip');

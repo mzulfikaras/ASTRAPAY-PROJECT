@@ -14,7 +14,7 @@ class FormBackupController extends Controller
      */
     public function index()
     {
-        $data = FormBackup::all() ;
+        $data = FormBackup::orderBy('created_at','DESC')->where('status','REQUEST')->get() ;
 
         return view('formBackup.index-formBackup',compact('data'));
     }
@@ -26,7 +26,7 @@ class FormBackupController extends Controller
      */
     public function create()
     {
-        return view('formBackup.create-formBackup');
+        //
     }
 
     /**
@@ -37,21 +37,7 @@ class FormBackupController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nama_informasi' => 'required',
-            'metode_backup' => 'required',
-            'periode_backup' => 'required',
-        ]);
-
-        $backup = FormBackup::create([
-            'nama_informasi' => $request->nama_informasi,
-            'metode_backup' => $request->metode_backup,
-            'periode_backup' => $request->periode_backup
-        ]);
-
-        if ($backup) {
-            return redirect()->route('form-backup.index');
-        }
+        //
     }
 
     /**
@@ -88,16 +74,22 @@ class FormBackupController extends Controller
     public function update(Request $request, FormBackup $form_backup)
     {
         $this->validate($request, [
+            'tanggal_permohonan' => 'required',
+            'nama_pemohon' => 'required',
             'nama_informasi' => 'required',
             'metode_backup' => 'required',
             'periode_backup' => 'required',
+            'status' => 'required',
         ]);
 
 
         $form_backup->update([
+            'tanggal_permohonan' => $request->tanggal_permohonan,
+            'nama_pemohon' => $request->nama_pemohon,
             'nama_informasi' => $request->nama_informasi,
             'metode_backup' => $request->metode_backup,
-            'periode_backup' => $request->periode_backup
+            'periode_backup' => $request->periode_backup,
+            'status' => $request->status,
         ]);
 
         if ($form_backup) {

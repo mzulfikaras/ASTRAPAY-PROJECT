@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
             }
        }else {
             if (Auth::guard($guard)->check()) {
-                   return redirect('/karyawan/home');
+                   return redirect('/karyawan/dashboard-karyawan');
             }
        }
 

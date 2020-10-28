@@ -27,22 +27,19 @@ class BackController extends Controller
     }
 
     public function formAksesDone(){
-        $data = FormAkses::where('status','DONE')->get();
+        $data = FormAkses::orderBy('created_at','DESC')->where('status','DONE')->get();
 
         return view('formAkses.done-formAkses', compact('data'));
     }
 
     public function formRestoreDone(){
-        $data = FormRestore::where('status','DONE')->get();
+        $data = FormRestore::orderBy('created_at','DESC')->where('status','DONE')->get();
         return view('formRestore.done-formRestore', compact('data'));
     }
 
-    public function internetDone(){
-        $internet = FormAkses::where([
-            ['status','DONE'],
-            ['kategori_akses_id', 3]
-            ])->get();
-        return view('formAkses.internet.done-internet', compact('internet'));
+    public function formBackupDone(){
+        $data = FormBackup::orderBy('created_at','DESC')->where('status','DONE')->get();
+        return view('formBackup.done-formBackup', compact('data'));
     }
 
     public function serverDone(){

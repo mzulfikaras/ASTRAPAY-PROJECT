@@ -35,7 +35,7 @@
                               <td>{{ $d->rencana_pemulihan }}</td>
                               <td>{{ $d->status }}</td>
                               <td>
-                                <a href="{{route('done.print.formRestore', $d->id)}}" class="btn btn-secondary btn-sm">Print PPDF</a>
+                                <a href="{{route('done.print.formRestore', $d->id)}}" class="btn btn-secondary btn-sm">Print PDF</a>
                               </td>
                             </tr>
                           @endforeach

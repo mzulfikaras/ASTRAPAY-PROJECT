@@ -15,6 +15,7 @@ class CreateFormRestoresTable extends Migration
     {
         Schema::create('form_restores', function (Blueprint $table) {
             $table->id();
+            $table->string('form_permohonan');
             $table->char('tanggal_permohonan');
             $table->string('nama_pemohon');
             $table->string('dasar_permohonan');

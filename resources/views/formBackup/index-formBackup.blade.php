@@ -11,32 +11,36 @@
                 <div class="card shadow mb-4">
                   <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Request Form Backup Tables</h6>
-                    <a href="{{route('form-backup.create')}}" class="btn btn-warning" style="margin-top: 20px">Request Backup</a>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                           <tr>
+                            <th>Tanggal Permohonan</th>
+                            <th>Nama Pemohon</th>
                             <th>Nama Informasi</th>
                             <th>Metode Backup</th>
                             <th>Periode Backup</th>
+                            <th>Status</th>
                             <th>ACTION</th>
                           </tr>
                         </thead>
                         <tbody>
                           @foreach ($data as $d)
                             <tr>
+                              <td>{{ $d->tanggal_permohonan }}</td>
+                              <td>{{ $d->nama_pemohon }}</td>
                               <td>{{ $d->nama_informasi }}</td>
                               <td>{{ $d->metode_backup  }}</td>
                               <td>{{ $d->periode_backup }}</td>
+                              <td>{{ $d->status }}</td>
                               <td>
                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{route('form-backup.destroy',$d->id)}}" method="POST">
                                   <a href="{{ route('form-backup.edit', $d->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
-                                  <a href="{{ route('done.print.formBackup', $d->id)}}" class="btn btn-secondary btn-sm">Print PDF</a>
                                 </form>
                               </td>
                             </tr>

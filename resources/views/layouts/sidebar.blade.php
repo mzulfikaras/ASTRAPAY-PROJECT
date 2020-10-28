@@ -36,11 +36,10 @@
           <div class="collapse-divider"></div>
           <h6 class="collapse-header">Kategori Akses Pages</h6>
           <a class="collapse-item" href="{{route('kategori.index')}}">Kategori Akses</a>
-          <h6 class="collapse-header">Request Backup Pages</h6>
-          <a class="collapse-item" href="{{route('form-backup.index')}}">Request FORM BACKUP</a>
           <h6 class="collapse-header">Pending Pages</h6>
           <a class="collapse-item" href="{{route('form-akses.index')}}">Request FORM AKSES</a>
           <a class="collapse-item" href="{{route('form-restore.index')}}">Request FORM RESTORE</a>
+          <a class="collapse-item" href="{{route('form-backup.index')}}">Request FORM BACKUP</a>
           {{-- <a class="collapse-item" href="{{route('internet.index')}}">Request INTERNET</a> --}}
           {{-- <a class="collapse-item" href="{{route('server.index')}}">Request SERVER</a> --}}
           {{-- <a class="collapse-item" href="{{route('sistem.index')}}">Request SISTEM</a> --}}
@@ -48,7 +47,7 @@
           <h6 class="collapse-header">Done Pages:</h6>
           <a class="collapse-item" href="{{route('formAkses.done')}}">Done FORM AKSES</a>
           <a class="collapse-item" href="{{route('formRestore.done')}}">Done FORM RESTORE</a>
-          {{-- <a class="collapse-item" href="{{route('internet.done')}}">Done INTERNET</a> --}}
+          <a class="collapse-item" href="{{route('formBackup.done')}}">Done FORM BACKUP</a>
           {{-- <a class="collapse-item" href="{{route('server.done')}}">Done SERVER</a> --}}
           {{-- <a class="collapse-item" href="{{route('sistem.done')}}">Done SISTEM</a> --}}
         </div>
