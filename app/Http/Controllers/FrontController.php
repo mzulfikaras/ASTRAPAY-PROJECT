@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Alert;
 use Auth;
+use Illuminate\Support\Carbon;
 use App\KategoriAkses;
 use App\FormAkses;
+use App\FormAksesKhusus;
 use App\FormRestore;
 use App\FormBackup;
+use App\FormNda;
 
 class FrontController extends Controller
 {
@@ -20,7 +23,9 @@ class FrontController extends Controller
         $akses = FormAkses::orderBy('created_at','DESC')->where('nama_pemohon', Auth::user()->name)->get();
         $restore = FormRestore::orderBy('created_at','DESC')->where('nama_pemohon', Auth::user()->name)->get();
         $backup = FormBackup::orderBy('created_at','DESC')->where('nama_pemohon', Auth::user()->name)->get();
-        return view('dashboard-karyawan', compact('akses','restore','backup'));
+        $akses_khusus = FormAksesKhusus::orderBy('created_at','DESC')->where('nama_pemohon', Auth::user()->name)->get();
+        $nda = FormNda::orderBy('created_at','DESC')->where('nama_pemohon', Auth::user()->name)->get();
+        return view('dashboard-karyawan', compact('akses','restore','backup','akses_khusus','nda'));
     }
 
     public function createFormAkses(){
@@ -133,6 +138,103 @@ class FrontController extends Controller
             return redirect()->route('dashboard.karyawan');
         } else{
             Alert::error('GAGAL','REQUEST FORM BACKUP GAGAL DIKIRIM');
+            return redirect()->route('dashboard.karyawan');
+        }
+    }
+
+    public function createFormAksesKhusus(){
+        return view('formAksesKhusus.create-formAksesKhusus');
+    }
+
+    public function storeFormAksesKhusus(Request $request){
+        $this->validate($request, [
+            'form_permohonan' => 'required',
+            'tanggal_permohonan' => 'required',
+            'nama_pemohon' => 'required',
+            'nama_kegiatan' => 'required',
+            'waktu_awal' => 'required',
+            'waktu_akhir' => 'required',
+            'rincian' => 'required',
+            'nama_personil_1' => 'required',
+            'nama_personil_2' => '',
+            'nama_personil_3' => '',
+            'nama_personil_4' => '',
+            'nama_personil_5' => '',
+            'nama_perangkat_1' => 'required',
+            'nama_perangkat_2' => '',
+            'nama_perangkat_3' => '',
+            'nama_perangkat_4' => '',
+            'nama_perangkat_5' => '',
+            'status' => 'required'
+        ]);
+
+        $akses_khusus = FormAksesKhusus::create([
+            'form_permohonan' => $request->form_permohonan,
+            'tanggal_permohonan' => $request->tanggal_permohonan,
+            'nama_pemohon' => $request->nama_pemohon,
+            'nama_kegiatan' => $request->nama_kegiatan,
+            'waktu_awal' => $request->waktu_awal,
+            'waktu_akhir' => $request->waktu_akhir,
+            'rincian' => $request->rincian,
+            'nama_personil_1' => $request->nama_personil_1,
+            'nama_personil_2' => $request->nama_personil_2,
+            'nama_personil_3' => $request->nama_personil_3,
+            'nama_personil_4' => $request->nama_personil_4,
+            'nama_personil_5' => $request->nama_personil_5,
+            'nama_perangkat_1' => $request->nama_perangkat_1,
+            'nama_perangkat_2' => $request->nama_perangkat_2,
+            'nama_perangkat_3' => $request->nama_perangkat_3,
+            'nama_perangkat_4' => $request->nama_perangkat_4,
+            'nama_perangkat_5' => $request->nama_perangkat_5,
+            'status' => $request->status,
+        ]);
+
+        if ($akses_khusus) {
+            Alert::success('BERHASIL','REQUEST FORM HAK AKSES KHUSUS BERHASIL DIKIRIM');
+            return redirect()->route('dashboard.karyawan');
+        } else {
+            Alert::error('GAGAL','REQUEST FORM HAK AKSES KHUSUS GAGAL DIKIRIM');
+            return redirect()->route('dashboard.karyawan');
+        }
+
+        
+    }
+
+    public function createFormNDA() {
+        $tanggal = $today = Carbon::now()->isoFormat('dddd, D MMMM Y');
+        return view('formNDA.create-formNDA', compact('tanggal'));
+    }
+
+    public function storeFormNDA(Request $request){
+        $this->validate($request, [
+            'form_permohonan' => 'required',
+            'tanggal_permohonan' => 'required',
+            'nama_pemohon' => 'required',
+            'nama_identitas' => 'required',
+            'no_identitas' => 'required',
+            'instansi' => 'required',
+            'nama_kegiatan' => 'required',
+            'periode_kegiatan' => 'required',
+            'status' => 'required',
+        ]);
+
+        $nda = FormNda::create([
+            'form_permohonan' => $request->form_permohonan,
+            'tanggal_permohonan' => $request->tanggal_permohonan,
+            'nama_pemohon' => $request->nama_pemohon,
+            'nama_identitas' => $request->nama_identitas,
+            'no_identitas' => $request->no_identitas,
+            'instansi' => $request->instansi,
+            'nama_kegiatan' => $request->nama_kegiatan,
+            'periode_kegiatan' => $request->periode_kegiatan,
+            'status' => $request->status,
+        ]);
+
+        if ($nda) {
+            Alert::success('BERHASIL','REQUEST FORM NDA BERHASIL DIKIRIM');
+            return redirect()->route('dashboard.karyawan');
+        } else {
+            Alert::error('GAGAL','REQUEST FORM NDA GAGAL DIKIRIM');
             return redirect()->route('dashboard.karyawan');
         }
     }

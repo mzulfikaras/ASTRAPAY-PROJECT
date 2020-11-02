@@ -40,16 +40,16 @@
           <a class="collapse-item" href="{{route('form-akses.index')}}">Request FORM AKSES</a>
           <a class="collapse-item" href="{{route('form-restore.index')}}">Request FORM RESTORE</a>
           <a class="collapse-item" href="{{route('form-backup.index')}}">Request FORM BACKUP</a>
-          {{-- <a class="collapse-item" href="{{route('internet.index')}}">Request INTERNET</a> --}}
-          {{-- <a class="collapse-item" href="{{route('server.index')}}">Request SERVER</a> --}}
+          <a class="collapse-item" href="{{route('form-akses-khusus.index')}}">FORM AKSES KHUSUS</a>
+          <a class="collapse-item" href="{{route('form-NDA.index')}}">Request FORM NDA</a>
           {{-- <a class="collapse-item" href="{{route('sistem.index')}}">Request SISTEM</a> --}}
           <div class="collapse-divider"></div>
           <h6 class="collapse-header">Done Pages:</h6>
           <a class="collapse-item" href="{{route('formAkses.done')}}">Done FORM AKSES</a>
           <a class="collapse-item" href="{{route('formRestore.done')}}">Done FORM RESTORE</a>
           <a class="collapse-item" href="{{route('formBackup.done')}}">Done FORM BACKUP</a>
-          {{-- <a class="collapse-item" href="{{route('server.done')}}">Done SERVER</a> --}}
-          {{-- <a class="collapse-item" href="{{route('sistem.done')}}">Done SISTEM</a> --}}
+          <a class="collapse-item" href="{{route('formAksesKhusus.done')}}">FORM AKSES KHUSUS</a>
+          <a class="collapse-item" href="{{route('formNDA.done')}}">Done FORM NDA</a>
         </div>
       </div>
     </li>

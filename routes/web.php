@@ -31,6 +31,10 @@ Route::prefix('karyawan')->group( function(){
     Route::post('/input-formRestore','FrontController@storeFormRestore')->name('store.user.formRestore')->middleware('auth');
     Route::get('/input-formBackup','FrontController@createFormBackup')->name('create.user.formBackup')->middleware('auth');
     Route::post('/input-formBackup','FrontController@storeFormBackup')->name('store.user.formBackup')->middleware('auth');
+    Route::get('/input-formAksesKhusus','FrontController@createFormAksesKhusus')->name('create.user.formAksesKhusus')->middleware('auth');
+    Route::post('/input-formAksesKhusus','FrontController@storeFormAksesKhusus')->name('store.user.formAksesKhusus')->middleware('auth');
+    Route::get('/input-formNDA','FrontController@createFormNDA')->name('create.user.formNDA')->middleware('auth');
+    Route::post('/input-formNDA','FrontController@storeFormNDA')->name('store.user.formNDA')->middleware('auth');
 });
 
 Route::prefix('admin')->middleware('auth:admin')->group( function(){
@@ -39,17 +43,19 @@ Route::prefix('admin')->middleware('auth:admin')->group( function(){
     Route::resource('/form-akses','FormAksesController');
     Route::resource('/kategori','KategoriAksesController');
     Route::get('/form-akses-done','BackController@formAksesDone')->name('formAkses.done');
+    Route::post('/form-akse/import', 'BackController@importAkses')->name('formAkses.import');
     Route::resource('/form-restore', 'FormRestoreController');
     Route::get('/formRestore-done','BackController@formRestoreDone')->name('formRestore.done');
     Route::resource('/form-backup', 'FormBackupController');
     Route::get('/formBackup-done','BackController@formBackupDone')->name('formBackup.done');
-    // Route::get('/internet-done','BackController@internetDone')->name('internet.done');
-    // Route::resource('/server', 'RequestServerController');
-    // Route::get('/server-done','BackController@serverDone')->name('server.done');
-    // Route::resource('/sistem', 'RequestSistemController');
-    // Route::get('/sistem-done','BackController@sistemDone')->name('sistem.done');
+    Route::resource('/form-akses-khusus', 'FormAksesKhususController');
+    Route::get('/formAksesKhusus-done','BackController@formAksesKhususDone')->name('formAksesKhusus.done');
+    Route::resource('/form-NDA', 'FormNDAController');
+    Route::get('/form-NDA-done','BackController@formNDADone')->name('formNDA.done');
     Route::get('/{report}/print-formAkses', 'BackController@getFormAkses')->name('done.print.formAkses');
     Route::get('/{report}/print-formRestore', 'BackController@getFormRestore')->name('done.print.formRestore');
     Route::get('/{report}/print-formBackup', 'BackController@getFormBackup')->name('done.print.formBackup');
+    Route::get('/{report}/print-formAksesKhusus', 'BackController@getFormAksesKhusus')->name('done.print.formAksesKhusus');
+    Route::get('/{report}/print-formNDA', 'BackController@getformNDA')->name('done.print.formNDA');
 });
 

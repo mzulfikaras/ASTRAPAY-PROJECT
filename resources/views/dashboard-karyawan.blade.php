@@ -68,10 +68,11 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- Start Header Top Area -->
+        @include('sweetalert::alert')
         @include('layouts.navbar-page')
     <!-- End Header Top Area -->
     <!-- Mobile Menu start -->
-    <div class="mobile-menu-area">
+    {{-- <div class="mobile-menu-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -91,7 +92,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Mobile Menu end -->
     <!-- Main Menu area start-->
     <div class="main-menu-area mg-tb-40">
@@ -110,6 +111,10 @@
                                 <li><a href="{{route('create.user.formRestore')}}">Request Form Restore</a>
                                 </li>
                                 <li><a href="{{route('create.user.formBackup')}}">Request Form Backup</a>
+                                </li>
+                                <li><a href="{{route('create.user.formAksesKhusus')}}">Request Form Akses Khusus </a>
+                                </li>
+                                <li><a href="{{route('create.user.formNDA')}}">Request Form Non Disclosure Agreement (NDA) </a>
                                 </li>
                             </ul>
                         </div>
@@ -185,22 +190,22 @@
                                         <td>{{$b->status}}</td>
                                     </tr>
                                 @endforeach
-                                    {{-- <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012/03/29</td>
-                                        <td>$433,060</td>
-                                    </tr> --}}
-                                    {{-- <tr>
-                                        <td>Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
-                                    </tr> --}}
+                                @foreach ($akses_khusus as $ak)
+                                    <tr>
+                                        <td>{{$ak->form_permohonan}}</td>
+                                        <td>{{$ak->tanggal_permohonan}}</td>
+                                        <td>{{$ak->nama_pemohon}}</td>
+                                        <td>{{$ak->status}}</td>
+                                    </tr>
+                                @endforeach
+                                @foreach ($nda as $n)
+                                    <tr>
+                                        <td>{{$n->form_permohonan}}</td>
+                                        <td>{{$n->tanggal_permohonan}}</td>
+                                        <td>{{$n->nama_pemohon}}</td>
+                                        <td>{{$n->status}}</td>
+                                    </tr>
+                                @endforeach
                                     {{-- <tr>
                                         <td>Brielle Williamson</td>
                                         <td>Integration Specialist</td>

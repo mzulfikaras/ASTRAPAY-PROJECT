@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 use App\FormAkses;
+use App\FormAksesKhusus;
 use App\FormBackup;
+use App\FormNda;
 use App\FormRestore;
 use App\KategoriAkses;
+use App\Imports\FormAksesImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use PDF;
 
@@ -42,20 +48,14 @@ class BackController extends Controller
         return view('formBackup.done-formBackup', compact('data'));
     }
 
-    public function serverDone(){
-        $server = FormAkses::where([
-            ['status','DONE'],
-            ['kategori_akses_id', 4]
-            ])->get();
-        return view('formAkses.server.done-server', compact('server'));
+    public function formAksesKhususDone(){
+        $data = FormAksesKhusus::orderBy('created_at','DESC')->where('status','DONE')->get();
+        return view('formAksesKhusus.done-formAksesKhusus', compact('data'));
     }
 
-    public function sistemDone(){
-        $sistem = FormAkses::where([
-            ['status','DONE'],
-            ['kategori_akses_id', 5]
-            ])->get();
-        return view('formAkses.sistem.done-sistem', compact('sistem'));
+    public function formNDADone(){
+        $data = FormNda::orderBy('created_at','DESC')->where('status','DONE')->get();
+        return view('formNDA.done-formNDA', compact('data'));
     }
 
     public function getFormAkses(FormAkses $report){
@@ -76,6 +76,40 @@ class BackController extends Controller
         $form_backup = PDF::loadview('report.formBackupPdf', ['report' => $report])->setPaper('a4','potrait');
 
         return $form_backup->stream();
+    }
+
+    public function getFormAksesKhusus(FormAksesKhusus $report){
+        $form_akses_khusus = PDF::loadview('report.formAksesKhususPdf', ['report' => $report])->setPaper('a4','potrait');
+
+        return $form_akses_khusus->stream();
+
+    }
+
+    public function getFormNDA(FormNda $report){
+        $form_NDA = PDF::loadview('report.formNDAPdf', ['report' => $report])->setPaper('a4','potrait');
+
+        return $form_NDA->stream();
+    }
+
+    
+    public function importAkses(Request $request){
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx','ods',
+        ]);
+
+        $file = $request->file('file');
+
+        $nama_file = $file->hashName();
+
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        $import = Excel::import(new FormAksesImport(), storage_path('app/public/excel/'.$nama_file));
+
+        Storage::delete($path);
+
+        if ($import) {
+            return redirect()->route('formAkses.done');
+        }
     }
 
 }

@@ -16,7 +16,7 @@
 
 
 <body>
-    @include('sweetalert::alert')
+    
     @include('layouts.navbar-page')
     <!-- Jumbotron -->
     <div class="jumbotron jumbotron-fluid">

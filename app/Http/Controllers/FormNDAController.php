@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\FormNda;
 use Illuminate\Http\Request;
-use App\FormAkses;
-use App\KategoriAkses;
 
-class RequestServerController extends Controller
+class FormNDAController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,9 @@ class RequestServerController extends Controller
      */
     public function index()
     {
-        $server = FormAkses::where([
-            ['kategori_akses_id' , 4],
-            ['status','REQUEST'],
-        ])->get();
+        $data = FormNda::orderBy('created_at','DESC')->where('status','REQUEST')->get();
 
-        return view('formAkses.server.index-server',compact('server'));
+        return view('formNDA.index-formNDA', compact('data'));
     }
 
     /**
@@ -61,12 +57,11 @@ class RequestServerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(FormAkses $server)
+    public function edit(FormNda $form_NDA)
     {
-        $kategori = KategoriAkses::all();
-        $server->find($server->id)->all();
+        $form_NDA->find($form_NDA->id)->all();
 
-        return view('formAkses.server.edit-server',compact('kategori','server'));
+        return view('formNDA.edit-formNDA', compact('form_NDA'));
     }
 
     /**
@@ -76,33 +71,34 @@ class RequestServerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FormAkses $server)
+    public function update(Request $request, FormNda $form_NDA)
     {
         $this->validate($request, [
-            'nama_requested' => 'required',
+            'form_permohonan' => 'required',
+            'tanggal_permohonan' => 'required',
             'nama_pemohon' => 'required',
-            'nip' => 'required|min:5|max:10',
-            'bagian' => 'required',
-            'kategori_akses_id' => 'required',
-            'alasan_akses' => 'required',
-            'tingkat_akses' => 'required',
+            'nama_identitas' => 'required',
+            'no_identitas' => 'required',
+            'instansi' => 'required',
+            'nama_kegiatan' => 'required',
+            'periode_kegiatan' => 'required',
             'status' => 'required',
         ]);
 
-
-        $server->update([
-            'nama_requested' => $request->nama_requested,
+        $form_NDA->update([
+            'form_permohonan' => $request->form_permohonan,
+            'tanggal_permohonan' => $request->tanggal_permohonan,
             'nama_pemohon' => $request->nama_pemohon,
-            'nip' => $request->nip,
-            'bagian' => $request->bagian,
-            'kategori_akses_id' => $request->kategori_akses_id,
-            'alasan_akses' => $request->alasan_akses,
-            'tingkat_akses' => $request->tingkat_akses,
+            'nama_identitas' => $request->nama_identitas,
+            'no_identitas' => $request->no_identitas,
+            'instansi' => $request->instansi,
+            'nama_kegiatan' => $request->nama_kegiatan,
+            'periode_kegiatan' => $request->periode_kegiatan,
             'status' => $request->status,
         ]);
 
-        if ($server) {
-            return redirect()->route('server.index');
+        if ($form_NDA) {
+            return redirect()->route('form-NDA.index');
         }
     }
 
@@ -112,14 +108,12 @@ class RequestServerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FormAkses $server)
+    public function destroy(FormNda $form_NDA)
     {
-        $server->find($server->id)->all();
+        $form_NDA->find($form_NDA->id)->all();
 
-        $server->delete();
-
-        if ($server) {
-            return redirect()->route('server.index');
-        }
+        $form_NDA->delete();
+        
+        return redirect()->route('form-NDA.index');
     }
 }
