@@ -12,6 +12,7 @@
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#import" style="margin-top: 20px;">
                       IMPORT FORM AKSES
                     </button>
+                    {{-- <a href="{{route('formAkses.export')}}" class="btn btn-primary btn-md" style="margin-top: 20px;">EXPORT FORM AKSES</a> --}}
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">

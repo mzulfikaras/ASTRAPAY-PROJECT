@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\FormAksesExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -23,7 +24,13 @@ class BackController extends Controller
         $done_akses = FormAkses::where('status','DONE')->get()->count();
         $request_restore = FormRestore::where('status','REQUEST')->get()->count();
         $done_restore = FormRestore::where('status','DONE')->get()->count();
-        return view('dashboard', compact('request_akses','done_akses','request_restore','done_restore'));
+        $request_backup = FormBackup::where('status','REQUEST')->get()->count();
+        $done_backup = FormBackup::where('status','DONE')->get()->count();
+        $request_akses_khusus = FormAksesKhusus::where('status','REQUEST')->get()->count();
+        $done_akses_khusus = FormAksesKhusus::where('status','DONE')->get()->count();
+        $request_nda = FormNda::where('status','REQUEST')->get()->count();
+        $done_nda = FormNda::where('status','DONE')->get()->count();
+        return view('dashboard', compact('request_akses','done_akses','request_restore','done_restore','request_backup','done_backup','request_akses_khusus','done_akses_khusus','request_nda','done_nda'));
     }
 
     public function indexKaryawan(){
@@ -110,6 +117,11 @@ class BackController extends Controller
         if ($import) {
             return redirect()->route('formAkses.done');
         }
+    }
+
+    public function exportAkses()
+    {
+        return Excel::download(new FormAksesExport(), 'form_akses.xlsx');
     }
 
 }

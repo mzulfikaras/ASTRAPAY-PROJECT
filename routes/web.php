@@ -43,7 +43,8 @@ Route::prefix('admin')->middleware('auth:admin')->group( function(){
     Route::resource('/form-akses','FormAksesController');
     Route::resource('/kategori','KategoriAksesController');
     Route::get('/form-akses-done','BackController@formAksesDone')->name('formAkses.done');
-    Route::post('/form-akse/import', 'BackController@importAkses')->name('formAkses.import');
+    Route::post('/form-akses/import', 'BackController@importAkses')->name('formAkses.import');
+    Route::get('/form-akses/export', 'BackController@exportAkses')->name('formAkses.export');
     Route::resource('/form-restore', 'FormRestoreController');
     Route::get('/formRestore-done','BackController@formRestoreDone')->name('formRestore.done');
     Route::resource('/form-backup', 'FormBackupController');

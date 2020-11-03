@@ -16,7 +16,7 @@ class FormAksesImport implements ToModel
     {
         return new FormAkses([
             'form_permohonan' => $row[0],
-            'tanggal_permohonan' => $row[1],
+            'tanggal_permohonan' =>  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[1])->format('d-M-Y'),
             'nama_pemohon' => $row[2],
             'nip' => $row[3],
             'bagian' => $row[4],
