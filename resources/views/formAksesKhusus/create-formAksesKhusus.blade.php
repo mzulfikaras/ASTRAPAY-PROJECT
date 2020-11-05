@@ -89,6 +89,24 @@
                         </div>
                     </div>
 
+                    <div class="form-row">
+                        <div class="name">Sistem</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" id="sistem" name="sistem">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">Tingkat Akses</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" id="tingkat_akses" name="tingkat_akses">
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="form-row">
                         <div class="name">Nama Personil 1</div>
