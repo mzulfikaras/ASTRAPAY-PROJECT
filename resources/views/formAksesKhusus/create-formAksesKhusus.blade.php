@@ -98,7 +98,7 @@
                                     <input class="input--style-5" type="text" id="nama_personil_1" name="nama_personil_1">
                                 </div>
                                 <div class="col" id="col2">
-                                    <button type="button" class="btn btn-warning btn-sm" id="formButton2">Tambah Personil</button>
+                                    <button type="button" class="btn btn-warning btn-sm" id="formButton2" style="font-size:10px;">Tambah Personil</button>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                                     <input class="input--style-5" type="text" id="nama_personil_2" name="nama_personil_2">
                                 </div>
                                 <div class="col" id="col3">
-                                    <button type="button" class="btn btn-warning btn-sm" id="formButton3">Tambah Personil</button>
+                                    <button type="button" class="btn btn-warning btn-sm" id="formButton3" style="font-size:10px;">Tambah Personil</button>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                                     <input class="input--style-5" type="text" id="nama_personil_3" name="nama_personil_3">
                                 </div>
                                 <div class="col" id="col4">
-                                    <button type="button" class="btn btn-warning btn-sm" id="formButton4">Tambah Personil</button>
+                                    <button type="button" class="btn btn-warning btn-sm" id="formButton4" style="font-size:20px;">Tambah Personil</button>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                     <input class="input--style-5" type="text" id="nama_personil_4" name="nama_personil_4">
                                 </div>
                                 <div class="col" id="col5">
-                                    <button type="button" class="btn btn-warning btn-sm" id="formButton5">Tambah Personil</button>
+                                    <button type="button" class="btn btn-warning btn-sm" id="formButton5" style="font-size:10px;">Tambah Personil</button>
                                 </div>
                             </div>
                         </div>

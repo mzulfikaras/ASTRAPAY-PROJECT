@@ -165,6 +165,11 @@ class FrontController extends Controller
             'nama_perangkat_3' => '',
             'nama_perangkat_4' => '',
             'nama_perangkat_5' => '',
+            'mac_address_1' => 'required',
+            'mac_address_2' => '',
+            'mac_address_3' => '',
+            'mac_address_4' => '',
+            'mac_address_5' => '',
             'status' => 'required'
         ]);
 
@@ -186,6 +191,11 @@ class FrontController extends Controller
             'nama_perangkat_3' => $request->nama_perangkat_3,
             'nama_perangkat_4' => $request->nama_perangkat_4,
             'nama_perangkat_5' => $request->nama_perangkat_5,
+            'mac_address_1' => $request->mac_address_1,
+            'mac_address_2' => $request->mac_address_2,
+            'mac_address_3' => $request->mac_address_3,
+            'mac_address_4' => $request->mac_address_4,
+            'mac_address_5' => $request->mac_address_5,
             'status' => $request->status,
         ]);
 
