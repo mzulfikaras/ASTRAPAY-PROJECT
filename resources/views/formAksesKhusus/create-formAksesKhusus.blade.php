@@ -98,7 +98,7 @@
                                     <input class="input--style-5" type="text" id="nama_personil_1" name="nama_personil_1">
                                 </div>
                                 <div class="col" id="col2">
-                                    <button type="button" class="btn btn-warning btn-sm" id="formButton2">Tambah Form</button>
+                                    <button type="button" class="btn btn-warning btn-sm" id="formButton2">Tambah Personil</button>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                                     <input class="input--style-5" type="text" id="nama_personil_2" name="nama_personil_2">
                                 </div>
                                 <div class="col" id="col3">
-                                    <button type="button" class="btn btn-warning btn-sm" id="formButton3">Tambah Form</button>
+                                    <button type="button" class="btn btn-warning btn-sm" id="formButton3">Tambah Personil</button>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                                     <input class="input--style-5" type="text" id="nama_personil_3" name="nama_personil_3">
                                 </div>
                                 <div class="col" id="col4">
-                                    <button type="button" class="btn btn-warning btn-sm" id="formButton4">Tambah Form</button>
+                                    <button type="button" class="btn btn-warning btn-sm" id="formButton4">Tambah Personil</button>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                     <input class="input--style-5" type="text" id="nama_personil_4" name="nama_personil_4">
                                 </div>
                                 <div class="col" id="col5">
-                                    <button type="button" class="btn btn-warning btn-sm" id="formButton5">Tambah Form</button>
+                                    <button type="button" class="btn btn-warning btn-sm" id="formButton5">Tambah Personil</button>
                                 </div>
                             </div>
                         </div>
@@ -213,6 +213,58 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-row">
+                        <div class="name">Mac Address 1</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" id="mac_address_1" name="mac_address_1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" id="form10" style="display: none;">
+                        <div class="name">Mac Address 2</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" id="mac_address_2" name="mac_address_2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" id="form11" style="display: none;">
+                        <div class="name">Mac Address 3</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" id="mac_address_3" name="mac_address_3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" id="form12" style="display: none;">
+                        <div class="name">Mac Address 4</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" id="mac_address_4" name="mac_address_4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" id="form13" style="display: none;">
+                        <div class="name">Mac Address 5</div>
+                        <div class="value">
+                            <div class="input-group row">
+                                <div class="col">
+                                    <input class="input--style-5" type="text" id="mac_address_5" name="mac_address_5">
+                                </div>
+                                <div class="col">
+                                    <div class="text-danger" id="message">
+                                       *Form Tambahan Sudah Maksimal
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     
                     <div class="form-row">
@@ -240,24 +292,28 @@
         $("#formButton2").click(function(){
             $("#form2").show();
             $("#form6").show();
+            $("#form10").show();
             $('#col2').hide();
         });
 
         $("#formButton3").click(function(){
             $("#form3").show();
             $("#form7").show();
+            $("#form11").show();
             $('#col3').hide();
         });
 
         $("#formButton4").click(function(){
             $("#form4").show();
             $("#form8").show();
+            $("#form12").show();
             $('#col4').hide();
         });
 
         $("#formButton5").click(function(){
             $("#form5").show();
             $("#form9").show();
+            $("#form13").show();
             $('#col5').hide();
         });
 

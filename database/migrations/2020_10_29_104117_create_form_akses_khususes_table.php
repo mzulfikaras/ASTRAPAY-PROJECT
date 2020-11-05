@@ -34,7 +34,7 @@ class CreateFormAksesKhususesTable extends Migration
             $table->string('nama_perangkat_3')->nullable();
             $table->string('nama_perangkat_4')->nullable();
             $table->string('nama_perangkat_5')->nullable();
-            $table->string('mac_address_1')->nullable();
+            $table->string('mac_address_1');
             $table->string('mac_address_2')->nullable();
             $table->string('mac_address_3')->nullable();
             $table->string('mac_address_4')->nullable();

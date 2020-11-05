@@ -13,6 +13,10 @@ use App\FormNda;
 use App\FormRestore;
 use App\KategoriAkses;
 use App\Imports\FormAksesImport;
+use App\Imports\FormAksesKhususImport;
+use App\Imports\FormBackupImport;
+use App\Imports\FormNDAImport;
+use App\Imports\FormRestoreImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use PDF;
@@ -101,7 +105,7 @@ class BackController extends Controller
     
     public function importAkses(Request $request){
         $this->validate($request, [
-            'file' => 'required|mimes:csv,xls,xlsx','ods',
+            'file' => 'required|mimes:csv,xls,xlsx,ods',
         ]);
 
         $file = $request->file('file');
@@ -116,6 +120,86 @@ class BackController extends Controller
 
         if ($import) {
             return redirect()->route('formAkses.done');
+        }
+    }
+
+    public function importRestore(Request $request){
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx,ods',
+        ]);
+
+        $file = $request->file('file');
+
+        $nama_file = $file->hashName();
+
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        $import = Excel::import(new FormRestoreImport(), storage_path('app/public/excel/'.$nama_file));
+
+        Storage::delete($path);
+
+        if ($import) {
+            return redirect()->route('formRestore.done');
+        }
+    }
+
+    public function importBackup(Request $request){
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx,ods',
+        ]);
+
+        $file = $request->file('file');
+
+        $nama_file = $file->hashName();
+
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        $import = Excel::import(new FormBackupImport(), storage_path('app/public/excel/'.$nama_file));
+
+        Storage::delete($path);
+
+        if ($import) {
+            return redirect()->route('formBackup.done');
+        }
+    }
+
+    public function importAksesKhusus(Request $request){
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx,ods',
+        ]);
+
+        $file = $request->file('file');
+
+        $nama_file = $file->hashName();
+
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        $import = Excel::import(new FormAksesKhususImport(), storage_path('app/public/excel/'.$nama_file));
+
+        Storage::delete($path);
+
+        if ($import) {
+            return redirect()->route('formAksesKhusus.done');
+        }
+    }
+
+    public function importNDA(Request $request){
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx,ods',
+        ]);
+
+        $file = $request->file('file');
+
+        $nama_file = $file->hashName();
+
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        $import = Excel::import(new FormNDAImport(), storage_path('app/public/excel/'.$nama_file));
+
+        Storage::delete($path);
+
+        if ($import) {
+            return redirect()->route('formNDA.done');
         }
     }
 

@@ -47,12 +47,16 @@ Route::prefix('admin')->middleware('auth:admin')->group( function(){
     Route::get('/form-akses/export', 'BackController@exportAkses')->name('formAkses.export');
     Route::resource('/form-restore', 'FormRestoreController');
     Route::get('/formRestore-done','BackController@formRestoreDone')->name('formRestore.done');
+    Route::post('/form-restore/import', 'BackController@importRestore')->name('formRestore.import');
     Route::resource('/form-backup', 'FormBackupController');
     Route::get('/formBackup-done','BackController@formBackupDone')->name('formBackup.done');
+    Route::post('/form-backup/import', 'BackController@importBackup')->name('formBackup.import');
     Route::resource('/form-akses-khusus', 'FormAksesKhususController');
     Route::get('/formAksesKhusus-done','BackController@formAksesKhususDone')->name('formAksesKhusus.done');
+    Route::post('/form-akses-khusus/import', 'BackController@importAksesKhusus')->name('formAksesKhusus.import');
     Route::resource('/form-NDA', 'FormNDAController');
     Route::get('/form-NDA-done','BackController@formNDADone')->name('formNDA.done');
+    Route::post('/form-nda/import', 'BackController@importNDA')->name('formNDA.import');
     Route::get('/{report}/print-formAkses', 'BackController@getFormAkses')->name('done.print.formAkses');
     Route::get('/{report}/print-formRestore', 'BackController@getFormRestore')->name('done.print.formRestore');
     Route::get('/{report}/print-formBackup', 'BackController@getFormBackup')->name('done.print.formBackup');

@@ -8,7 +8,6 @@
                 @csrf
                 @method('PUT')
 
-
                 <div class="form-group">
                     <label for="form_permohonan">Form Permohonan</label>
                     <input type="text" class="form-control" id="form_permohonan" name="form_permohonan" value="{{old('form_permohonan', $form_backup->form_permohonan)}}" readonly>
@@ -40,7 +39,7 @@
                         {{ $message }}
                     </div>
                 @enderror
-
+                
 
                 <div class="form-group">
                     <label for="metode_backup">Metode Backup</label>
@@ -59,10 +58,9 @@
                     <option value="DONE">DONE</option>
                 </select>
 
-
                 <div class="form-group" style="margin-top:20px;">
                     <button type="submit" class="btn btn-md btn-primary">EDIT</button>
-                    <a href="{{route('form-backup.index')}}" class="btn btn-secondary">BACK</a>
+                    <a href="{{route('form-akses.index')}}" class="btn btn-secondary">BACK</a>
                 </div>
 
             </form>
