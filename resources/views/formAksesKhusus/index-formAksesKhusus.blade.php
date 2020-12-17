@@ -17,6 +17,7 @@
                             <th>Form Permohonan</th>
                             <th>Tanggal Permohonan</th>
                             <th>Nama Pemohon</th>
+                            <th>Bagian</th>
                             <th>Nama Kegiatan/Pekerjaan</th>
                             <th>Jangka Waktu</th>
                             <th>Rincian Kegiatan/Pekerjaan</th>
@@ -47,6 +48,7 @@
                               <td>{{ $d->form_permohonan }}</td>
                               <td>{{ $d->tanggal_permohonan }}</td>
                               <td>{{ $d->nama_pemohon }}</td>
+                              <td>{{ $d->bagian}}</td>
                               <td>{{ $d->nama_kegiatan }}</td>
                               <td>{{ $d->waktu_awal}} sd. {{ $d->waktu_akhir }}</td>
                               <td>{{ $d->rincian }}</td>

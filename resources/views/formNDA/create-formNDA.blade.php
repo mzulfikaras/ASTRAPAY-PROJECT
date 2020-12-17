@@ -44,6 +44,21 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-row">
+                        <div class="name">Bagian/Fungsi</div>
+                        <div class="value">
+                            <div class="input-group">
+                            <input class="input--style-5" type="text" id="bagian" name="bagian" value="{{Auth::user()->departement}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    @error('bagian')
+                        <div class="text-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
                     
                     @error('nama_pemohon')
                         <div class="text-danger">

@@ -20,9 +20,14 @@ class RedirectIfAuthenticated
     {
         if ($guard == 'admin') {
             if (Auth::guard($guard)->check()) {
-                   return redirect('/admin/dashboard');
+                return redirect('/admin/dashboard');
             }
-       }else {
+       }  else if($guard == 'manager'){
+            if (Auth::guard($guard)->check()) {
+                return redirect('/manager/dashboard');
+            }
+       }
+       else {
             if (Auth::guard($guard)->check()) {
                    return redirect('/karyawan/dashboard-karyawan');
             }

@@ -1,5 +1,6 @@
 <?php
 
+use App\KategoriAkses;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -12,24 +13,18 @@ class KategoriSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('kategori_akses')->insert([
-            'kategori_akses' => 'EMAIL'
-        ]);
 
-        DB::table('kategori_akses')->insert([
-            'kategori_akses' => 'INTERNET'
-        ]);
 
-        DB::table('kategori_akses')->insert([
-            'kategori_akses' => 'INTRANET'
-        ]);
+        $kategories = [
+            ['id' => 1 , 'kategori_akses' => 'EMAIL'],
+            ['id' => 2 , 'kategori_akses' => 'INTERNET'],
+            ['id' => 3 , 'kategori_akses' => 'INTRANET'],
+            ['id' => 4 , 'kategori_akses' => 'SERVER'],
+            ['id' => 5 , 'kategori_akses' => 'SISTEM'],
+        ];
 
-        DB::table('kategori_akses')->insert([
-            'kategori_akses' => 'SERVER'
-        ]);
-
-        DB::table('kategori_akses')->insert([
-            'kategori_akses' => 'SISTEM'
-        ]);
+        foreach($kategories as $kategori){
+            KategoriAkses::updateOrCreate(['id' => $kategori['id']], $kategori);
+        }
     }
 }

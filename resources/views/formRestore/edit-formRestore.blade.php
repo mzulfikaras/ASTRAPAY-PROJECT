@@ -8,11 +8,11 @@
                 @csrf
                 @method('PUT')
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="form_permohonan">Form Permohonan</label>
-                        <input type="text" class="form-control" id="form_permohonan" name="form_permohonan" value="{{old('form_permohonan', $form_restore->form_permohonan)}}" readonly>
-                    </div>
+
+                <div class="form-group">
+                    <label for="form_permohonan">Form Permohonan</label>
+                    <input type="text" class="form-control" id="form_permohonan" name="form_permohonan" value="{{old('form_permohonan', $form_restore->form_permohonan)}}" readonly>
+                </div>
 
                 <div class="form-group">
                     <label for="tanggal_permohonan">Tanggal Permohonan</label>
@@ -28,6 +28,11 @@
                 <div class="form-group">
                     <label for="nama_pemohon">Nama Pemohon</label>
                     <input type="text" class="form-control" id="nama_pemohon" name="nama_pemohon" value="{{old('nama_pemohon', $form_restore->nama_pemohon)}}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="bagian">Bagian</label>
+                    <input type="text" class="form-control" id="bagian" name="bagian" value="{{old('bagian', $form_akse->bagian)}}">
                 </div>
 
                 <div class="form-group">
@@ -61,7 +66,7 @@
                 <select class="custom-select" name="status">
                     <option value="{{old('status', $form_restore->status)}}"> {{old('status', $form_restore->status)}}</option>
                     <option value="REQUEST">REQUEST</option>
-                    <option value="DONE">DONE</option>
+                    <option value="CLOSE">CLOSE</option>
                 </select>
 
                 <div class="form-group" style="margin-top:20px;">

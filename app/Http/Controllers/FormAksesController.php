@@ -15,7 +15,7 @@ class FormAksesController extends Controller
      */
     public function index()
     {
-        $data = FormAkses::where('status','REQUEST')->get();
+        $data = FormAkses::orderBy('created_at','DESC')->where('status','REQUEST')->orWhere('status','APPROVAL')->get();
 
         return view('formAkses.index-formAkses',compact('data'));
     }
@@ -117,6 +117,53 @@ class FormAksesController extends Controller
 
         if ($form_akse) {
             return redirect()->route('form-akses.index');
+        }
+    }
+
+    public function editAksesManager(FormAkses $akses){
+        $akses->find($akses->id)->all();
+
+        $kategori = KategoriAkses::all();
+
+        return view('manager.aksesManager.edit-akses', compact('akses','kategori'));
+    }
+
+    public function updateAksesManager(Request $request, FormAkses $akses){
+        $this->validate($request, [
+            'nama_pemohon' => 'required',
+            'nip' => 'required|min:5|max:10',
+            'bagian' => 'required',
+            'kategori_akses_id' => 'required',
+            'alasan_akses' => 'required',
+            'tingkat_akses' => 'required',
+            'status' => 'required',
+        ]);
+
+        // $form_akse = FormAkses::findOrFail($form_akse->id);
+
+        $akses->update([
+            'nama_pemohon' => $request->nama_pemohon,
+            'nip' => $request->nip,
+            'bagian' => $request->bagian,
+            'kategori_akses_id' => $request->kategori_akses_id,
+            'alasan_akses' => $request->alasan_akses,
+            'tingkat_akses' => $request->tingkat_akses,
+            'status' => $request->status,
+        ]);
+
+        if ($akses) {
+            return redirect()->route('manager.akses');
+        }
+    }
+
+    public function destroyAksesManager(FormAkses $akses)
+    {
+        $akses->find($akses->id)->all();
+
+        $akses->delete();
+
+        if ($akses) {
+            return redirect()->route('manager.akses');
         }
     }
 }

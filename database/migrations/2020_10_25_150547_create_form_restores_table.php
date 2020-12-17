@@ -18,6 +18,7 @@ class CreateFormRestoresTable extends Migration
             $table->string('form_permohonan');
             $table->char('tanggal_permohonan');
             $table->string('nama_pemohon');
+            $table->string('bagian');
             $table->string('dasar_permohonan');
             $table->string('nama_info');
             $table->string('tujuan');

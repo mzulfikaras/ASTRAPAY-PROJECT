@@ -14,7 +14,7 @@ class FormNDAController extends Controller
      */
     public function index()
     {
-        $data = FormNda::orderBy('created_at','DESC')->where('status','REQUEST')->get();
+        $data = FormNda::orderBy('created_at','DESC')->where('status','REQUEST')->orWhere('status','APPROVAL')->get();
 
         return view('formNDA.index-formNDA', compact('data'));
     }
@@ -77,6 +77,7 @@ class FormNDAController extends Controller
             'form_permohonan' => 'required',
             'tanggal_permohonan' => 'required',
             'nama_pemohon' => 'required',
+            'bagian' => 'required',
             'nama_identitas' => 'required',
             'no_identitas' => 'required',
             'instansi' => 'required',
@@ -89,6 +90,7 @@ class FormNDAController extends Controller
             'form_permohonan' => $request->form_permohonan,
             'tanggal_permohonan' => $request->tanggal_permohonan,
             'nama_pemohon' => $request->nama_pemohon,
+            'bagian' => $request->bagian,
             'nama_identitas' => $request->nama_identitas,
             'no_identitas' => $request->no_identitas,
             'instansi' => $request->instansi,
@@ -115,5 +117,54 @@ class FormNDAController extends Controller
         $form_NDA->delete();
         
         return redirect()->route('form-NDA.index');
+    }
+
+
+    public function editNdaManager(FormNda $nda){
+        $nda->find($nda->id)->all();
+
+        return view('manager.ndaManager.edit-nda', compact('nda'));
+    }
+
+    public function updateNdaManager(Request $request, FormNda $nda){
+        
+        $this->validate($request, [
+            'form_permohonan' => 'required',
+            'tanggal_permohonan' => 'required',
+            'nama_pemohon' => 'required',
+            'bagian' => 'required',
+            'nama_identitas' => 'required',
+            'no_identitas' => 'required',
+            'instansi' => 'required',
+            'nama_kegiatan' => 'required',
+            'periode_kegiatan' => 'required',
+            'status' => 'required',
+        ]);
+
+        $nda->update([
+            'form_permohonan' => $request->form_permohonan,
+            'tanggal_permohonan' => $request->tanggal_permohonan,
+            'nama_pemohon' => $request->nama_pemohon,
+            'bagian' => $request->bagian,
+            'nama_identitas' => $request->nama_identitas,
+            'no_identitas' => $request->no_identitas,
+            'instansi' => $request->instansi,
+            'nama_kegiatan' => $request->nama_kegiatan,
+            'periode_kegiatan' => $request->periode_kegiatan,
+            'status' => $request->status,
+        ]);
+
+        if ($nda) {
+            return redirect()->route('manager.nda');
+        }
+    }
+
+    public function destroyNdaManager(FormNda $nda){
+
+        $nda->find($nda->id)->all();
+
+        $nda->delete();
+        
+        return redirect()->route('manager.nda');
     }
 }

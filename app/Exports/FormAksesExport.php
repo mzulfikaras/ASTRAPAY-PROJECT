@@ -12,6 +12,6 @@ class FormAksesExport implements FromCollection
     */
     public function collection()
     {
-        return FormAkses::where('status','DONE')->get();
+        return FormAkses::all();
     }
 }

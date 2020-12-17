@@ -18,6 +18,7 @@ class CreateFormAksesKhususesTable extends Migration
             $table->string('form_permohonan');
             $table->string('tanggal_permohonan');
             $table->string('nama_pemohon');
+            $table->string('bagian');
             $table->string('nama_kegiatan');
             $table->date('waktu_awal');
             $table->date('waktu_akhir');

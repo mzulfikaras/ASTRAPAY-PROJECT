@@ -18,6 +18,7 @@ class CreateFormNdasTable extends Migration
             $table->string('form_permohonan');
             $table->char('tanggal_permohonan');
             $table->string('nama_pemohon');
+            $table->string('bagian');
             $table->string('nama_identitas');
             $table->string('no_identitas');
             $table->string('instansi');

@@ -54,6 +54,26 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="departement" class="col-md-4 col-form-label text-md-right">{{ __('Departement') }}</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control @error('departement') is-invalid @enderror" name="departement" value="{{ old('departement') }}" required autocomplete="departement">
+                                    <option selected>---> Select Departement <---</option>
+                                    <option value="PRODUCT ENGINEERING">PRODUCT ENGINEERING</option>
+                                    <option value="PRODUCT OPERATIONS">PRODUCT OPERATIONS</option>
+                                    <option value="SYSTEM OPERATION">SYSTEM OPERATION</option>
+                                </select>
+                                {{-- <input id="departement" class="form-control @error('departement') is-invalid @enderror" name="departement" value="{{ old('departement') }}" required autocomplete="departement"> --}}
+
+                                @error('departement')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

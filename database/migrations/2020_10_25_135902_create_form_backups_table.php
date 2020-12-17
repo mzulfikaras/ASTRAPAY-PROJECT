@@ -18,6 +18,7 @@ class CreateFormBackupsTable extends Migration
             $table->string('form_permohonan');
             $table->char('tanggal_permohonan');
             $table->string('nama_pemohon');
+            $table->string('bagian');
             $table->string('nama_informasi');
             $table->string('metode_backup');
             $table->string('periode_backup');

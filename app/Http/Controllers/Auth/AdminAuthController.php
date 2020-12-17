@@ -5,20 +5,28 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class AdminAuthController extends Controller
 {
     use AuthenticatesUsers;
     
-    protected $redirectTo = '/dashboard';
+    // protected $redirectTo = '/dashboard';
+
     
     protected $maxAttempts = 3;
-    protected $decayMinutes = 2;
+    protected $decayMinutes = 5;
 
 
     public function __construct()
     {
         $this->middleware('guest:admin')->except('postLogout');
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 
     public function getLogin()
@@ -31,10 +39,11 @@ class AdminAuthController extends Controller
         return 'nip';
     }
 
+
     public function postLogin(Request $request)
     {
         $this->validate($request, [
-            'nip' => 'required',
+            'nip' => 'required|min:2',
             'password' => 'required|min:5'
         ]);
 
@@ -52,11 +61,19 @@ class AdminAuthController extends Controller
         }
     }
 
-    public function postLogout()
-    {
-        auth()->guard('admin')->logout();
-        session()->flush();
 
+    public function postLogout(Request $request)
+    {
+        // Get the session key for this user
+        $sessionKey = $this->guard()->getName();
+
+        // Logout current user by guard
+        $this->guard()->logout();
+
+        // Delete single session key (just for this user)
+        $request->session()->forget($sessionKey);
+
+        // After logout, redirect to login screen again
         return redirect()->route('admin.login');
     }
 }

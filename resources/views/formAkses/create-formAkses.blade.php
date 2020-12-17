@@ -69,7 +69,7 @@
                         <div class="name">Bagian/Fungsi</div>
                         <div class="value">
                             <div class="input-group">
-                            <input class="input--style-5" type="text" id="bagian" name="bagian">
+                            <input class="input--style-5" type="text" id="bagian" name="bagian" value="{{Auth::user()->departement}}" readonly>
                             </div>
                         </div>
                     </div>

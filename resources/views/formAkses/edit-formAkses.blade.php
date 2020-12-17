@@ -70,7 +70,7 @@
                 <select class="custom-select" name="status">
                     <option value="{{old('status', $form_akse->status)}}"> {{old('status', $form_akse->status)}}</option>
                     <option value="REQUEST">REQUEST</option>
-                    <option value="DONE">DONE</option>
+                    <option value="CLOSE">CLOSE</option>
                 </select>
 
                 <div class="form-group" style="margin-top:20px;">

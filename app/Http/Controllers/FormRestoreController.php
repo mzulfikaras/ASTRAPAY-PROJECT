@@ -14,7 +14,7 @@ class FormRestoreController extends Controller
      */
     public function index()
     {
-        $data = FormRestore::where('status','REQUEST')->get();
+        $data = FormRestore::orderBy('created_at','DESC')->where('status','REQUEST')->orWhere('status','APPROVAL')->get();
 
         return view('formRestore.index-formRestore',compact('data'));
     }
@@ -76,6 +76,7 @@ class FormRestoreController extends Controller
         $this->validate($request, [
             'tanggal_permohonan' => 'required',
             'nama_pemohon' => 'required',
+            'bagian' => 'required',
             'dasar_permohonan' => 'required',
             'nama_info' => 'required',
             'tujuan' => 'required',
@@ -87,6 +88,7 @@ class FormRestoreController extends Controller
         $form_restore->update([
             'tanggal_permohonan' => $request->tanggal_permohonan,
             'nama_pemohon' => $request->nama_pemohon,
+            'bagian' => $request->bagian,
             'dasar_permohonan' => $request->dasar_permohonan,
             'nama_info' => $request->nama_info,
             'tujuan' => $request->tujuan,
@@ -113,6 +115,54 @@ class FormRestoreController extends Controller
 
         if ($form_restore) {
             return redirect()->route('form-restore.index');
+        }
+    }
+
+    public function editRestoreManager(FormRestore $restore)
+    {
+        $restore->find($restore->id)->all();
+
+        return view('manager.restoreManager.edit-restore',compact('restore'));
+    }
+
+    public function updateRestoreManager(Request $request, FormRestore $restore)
+    {
+        $this->validate($request, [
+            'tanggal_permohonan' => 'required',
+            'nama_pemohon' => 'required',
+            'bagian' => 'required',
+            'dasar_permohonan' => 'required',
+            'nama_info' => 'required',
+            'tujuan' => 'required',
+            'rencana_pemulihan' => '',
+            'status' => 'required',
+        ]);
+
+
+        $restore->update([
+            'tanggal_permohonan' => $request->tanggal_permohonan,
+            'nama_pemohon' => $request->nama_pemohon,
+            'bagian' => $request->bagian,
+            'dasar_permohonan' => $request->dasar_permohonan,
+            'nama_info' => $request->nama_info,
+            'tujuan' => $request->tujuan,
+            'rencana_pemulihan' => $request->rencana_pemulihan,
+            'status' => $request->status,
+        ]);
+
+        if ($restore) {
+            return redirect()->route('manager.restore');
+        }
+    }
+
+    public function destroyRestoreManager(FormRestore $restore)
+    {
+        $restore->find($restore->id)->all();
+
+        $restore->delete();
+
+        if ($restore) {
+            return redirect()->route('manager.restore');
         }
     }
 }

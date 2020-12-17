@@ -51,6 +51,21 @@
                     @enderror
 
                     <div class="form-row">
+                        <div class="name">Bagian/Fungsi</div>
+                        <div class="value">
+                            <div class="input-group">
+                            <input class="input--style-5" type="text" id="bagian" name="bagian" value="{{Auth::user()->departement}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    @error('bagian')
+                        <div class="text-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                    <div class="form-row">
                         <div class="name">Nama Kegiatan / Pekerjaan</div>
                         <div class="value">
                             <div class="input-group">
@@ -122,6 +137,12 @@
                         </div>
                     </div>
 
+                    @error('nama_personil_1')
+                        <div class="text-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
                     <div class="form-row" id="form2" style="display: none;">
                         <div class="name">Nama Personil 2</div>
                         <div class="value">
@@ -189,6 +210,12 @@
                         </div>
                     </div>
 
+                    @error('nama_perangkat_1')
+                        <div class="text-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
                     <div class="form-row" id="form6" style="display: none;">
                         <div class="name">Nama Perangkat 2</div>
                         <div class="value">
@@ -240,6 +267,12 @@
                             </div>
                         </div>
                     </div>
+
+                    @error('mac_address_1')
+                        <div class="text-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
                     <div class="form-row" id="form10" style="display: none;">
                         <div class="name">Mac Address 2</div>

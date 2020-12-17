@@ -15,11 +15,13 @@ class AdminSeeder extends Seeder
     public function run()
     {
         $admins = [
-            ['id' => 1, 'name' => 'ADMIN 1', 'email' => 'admin@email.com', 'nip' => '98899', 'password' => Hash::make('admin1')],
+            ['id' => 1, 'name' => 'ADMIN 1', 'email' => 'admin@email.com', 'nip' => '98899', 'departement' => 'PRODUCT ENGINEERING' ,'password' => Hash::make('admin1')],
         ];
+        
         
         foreach ($admins as $admin) {
             Admin::updateOrCreate(['id' => $admin['id']], $admin);
         }
+
     }
 }

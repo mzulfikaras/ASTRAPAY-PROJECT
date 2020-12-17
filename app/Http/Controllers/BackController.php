@@ -19,6 +19,7 @@ use App\Imports\FormNDAImport;
 use App\Imports\FormRestoreImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use PDF;
 
 class BackController extends Controller
@@ -43,29 +44,67 @@ class BackController extends Controller
         return view('karyawan.index-karyawan',compact('karyawan'));
     }
 
+    public function editKaryawan(User $user){
+        $user->find($user->id)->all();
+
+        return view('karyawan.edit-karyawan',compact('user'));
+    }
+
+    public function updateKaryawan(Request $request, User $user){
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'nip' => 'required',
+            'departement' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'nip' => $request->nip,
+            'departement' => $request->departement,
+            'password' => Hash::make($request->password),
+        ]);
+
+        if ($user) {
+            return redirect()->route('karyawan.index');
+        }
+    }
+
+    public function deleteKaryawan(User $user){
+        $user->find($user->id)->all();
+
+        $user->delete();
+
+        if ($user) {
+            return redirect()->route('karyawan.index');
+        }
+    }
+
     public function formAksesDone(){
-        $data = FormAkses::orderBy('created_at','DESC')->where('status','DONE')->get();
+        $data = FormAkses::orderBy('created_at','DESC')->where('status','CLOSE')->get();
 
         return view('formAkses.done-formAkses', compact('data'));
     }
 
     public function formRestoreDone(){
-        $data = FormRestore::orderBy('created_at','DESC')->where('status','DONE')->get();
+        $data = FormRestore::orderBy('created_at','DESC')->where('status','CLOSE')->get();
         return view('formRestore.done-formRestore', compact('data'));
     }
 
     public function formBackupDone(){
-        $data = FormBackup::orderBy('created_at','DESC')->where('status','DONE')->get();
+        $data = FormBackup::orderBy('created_at','DESC')->where('status','CLOSE')->get();
         return view('formBackup.done-formBackup', compact('data'));
     }
 
     public function formAksesKhususDone(){
-        $data = FormAksesKhusus::orderBy('created_at','DESC')->where('status','DONE')->get();
+        $data = FormAksesKhusus::orderBy('created_at','DESC')->where('status','CLOSE')->get();
         return view('formAksesKhusus.done-formAksesKhusus', compact('data'));
     }
 
     public function formNDADone(){
-        $data = FormNda::orderBy('created_at','DESC')->where('status','DONE')->get();
+        $data = FormNda::orderBy('created_at','DESC')->where('status','CLOSE')->get();
         return view('formNDA.done-formNDA', compact('data'));
     }
 

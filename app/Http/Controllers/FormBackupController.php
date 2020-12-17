@@ -14,7 +14,7 @@ class FormBackupController extends Controller
      */
     public function index()
     {
-        $data = FormBackup::orderBy('created_at','DESC')->where('status','REQUEST')->get() ;
+        $data = FormBackup::orderBy('created_at','DESC')->where('status','REQUEST')->orWhere('status','APPROVAL')->get();
 
         return view('formBackup.index-formBackup',compact('data'));
     }
@@ -76,6 +76,7 @@ class FormBackupController extends Controller
         $this->validate($request, [
             'tanggal_permohonan' => 'required',
             'nama_pemohon' => 'required',
+            'bagian' => 'required',
             'nama_informasi' => 'required',
             'metode_backup' => 'required',
             'periode_backup' => 'required',
@@ -86,6 +87,7 @@ class FormBackupController extends Controller
         $form_backup->update([
             'tanggal_permohonan' => $request->tanggal_permohonan,
             'nama_pemohon' => $request->nama_pemohon,
+            'bagian' => $request->bagian,
             'nama_informasi' => $request->nama_informasi,
             'metode_backup' => $request->metode_backup,
             'periode_backup' => $request->periode_backup,
@@ -111,6 +113,49 @@ class FormBackupController extends Controller
 
         if ($form_backup) {
             return redirect()->route('form-backup.index');
+        }
+    }
+
+    public function editBackupManager(FormBackup $backup){
+        $backup->find($backup->id)->all();
+
+        return view('manager.backupManager.edit-backup',compact('backup'));
+    }
+
+    public function updateBackupManager(Request $request, FormBackup $backup){
+        $this->validate($request, [
+            'tanggal_permohonan' => 'required',
+            'nama_pemohon' => 'required',
+            'bagian' => 'required',
+            'nama_informasi' => 'required',
+            'metode_backup' => 'required',
+            'periode_backup' => 'required',
+            'status' => 'required',
+        ]);
+
+
+        $backup->update([
+            'tanggal_permohonan' => $request->tanggal_permohonan,
+            'nama_pemohon' => $request->nama_pemohon,
+            'bagian' => $request->bagian,
+            'nama_informasi' => $request->nama_informasi,
+            'metode_backup' => $request->metode_backup,
+            'periode_backup' => $request->periode_backup,
+            'status' => $request->status,
+        ]);
+
+        if ($backup) {
+            return redirect()->route('manager.backup');
+        }
+    }
+
+    public function destroyBackupManager(FormBackup $backup){
+        $backup->find($backup->id)->all();
+
+        $backup->delete();
+
+        if ($backup) {
+            return redirect()->route('manager.backup');
         }
     }
 }

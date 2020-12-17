@@ -30,6 +30,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="bagian">Bagian</label>
+                    <input type="text" class="form-control" id="bagian" name="bagian" value="{{old('bagian', $form_akse->bagian)}}">
+                </div>
+
+                <div class="form-group">
                     <label for="nama_kegiatan">Nama Kegiatan</label>
                     <input type="text" class="form-control" id="nama_kegiatan" name="nama_kegiatan" value="{{old('nama_kegiatan', $form_akses_khusu->nama_kegiatan)}}">
                 </div>
@@ -147,7 +152,7 @@
                 <select class="custom-select" name="status">
                     <option value="{{old('status', $form_akses_khusu->status)}}"> {{old('status', $form_akses_khusu->status)}}</option>
                     <option value="REQUEST">REQUEST</option>
-                    <option value="DONE">DONE</option>
+                    <option value="CLOSE">CLOSE</option>
                 </select>
 
                 <div class="form-group" style="margin-top:20px;">

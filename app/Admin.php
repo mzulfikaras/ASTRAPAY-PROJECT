@@ -10,10 +10,14 @@ class Admin extends Authenticable
 {
     use Notifiable;
 
-    protected $guard = 'admin';
+    protected $table = "admins";
+
+    protected $primaryKey = "id";
+
+    protected $guard = 'manager';
 
     protected $fillable = [
-        'name', 'email', 'username', 'password','email_verfied_at'
+        'name', 'email', 'nip','departement', 'password','email_verfied_at'
     ];
 
     protected $hidden = ['password'];

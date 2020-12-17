@@ -31,6 +31,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="bagian">Bagian</label>
+                    <input type="text" class="form-control" id="bagian" name="bagian" value="{{old('bagian', $form_akse->bagian)}}">
+                </div>
+
+                <div class="form-group">
                     <label for="nama_identitas">Nama (KTP)</label>
                     <input type="text" class="form-control" id="nama_identitas" name="nama_identitas" value="{{old('nama_identitas', $form_NDA->nama_identitas)}}">
                 </div>
@@ -68,7 +73,7 @@
                 <select class="custom-select" name="status">
                     <option value="{{old('status', $form_NDA->status)}}"> {{old('status', $form_NDA->status)}}</option>
                     <option value="REQUEST">REQUEST</option>
-                    <option value="DONE">DONE</option>
+                    <option value="CLOSE">CLOSE</option>
                 </select>
 
                 <div class="form-group" style="margin-top:20px;">
