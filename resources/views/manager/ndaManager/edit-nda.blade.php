@@ -1,7 +1,7 @@
 @extends('manager.master-manager')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="padding-left: 30px;">
         <div class="row">
             <form action="{{route('update.manager.nda', $nda->id)}}" method="POST">
                 

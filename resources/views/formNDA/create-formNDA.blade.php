@@ -1,4 +1,5 @@
 @extends('master-page')
+@section('title','Form Submission')
 
 @section('content')
 

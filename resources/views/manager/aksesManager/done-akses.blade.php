@@ -29,7 +29,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                      <table id="example1" class="table table-bordered table-striped">
+                      <table id="example2" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Form Permohonan</th>
@@ -40,19 +40,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($data as $d)
-                            <tr>
-                                <td>{{$d->form_permohonan}}</td>
-                                <td>{{$d->tanggal_permohonan}}</td>
-                                <td>
-                                    @if($d->status == 'CLOSE')
-                                      {{$d->updated_at}}
-                                    @endif
-                                </td>
-                                <td>{{$d->nama_pemohon}}</td>
-                                <td>{{$d->status}}</td>
-                            </tr>
-                        @endforeach
+                            @foreach ($data as $d)
+                                <tr>
+                                        <td>{{$d->form_permohonan}}</td>
+                                        <td>{{$d->tanggal_permohonan}}</td>
+                                        <td>
+                                          @if($d->status == 'CLOSE')
+                                            {{$d->updated_at}}
+                                          @endif
+                                        </td>
+                                        <td>{{$d->nama_pemohon}}</td>
+                                        <td>{{$d->status}}</td>
+                                    </tr>
+                                @endforeach
                         </tbody>
                       </table>
                     </div>

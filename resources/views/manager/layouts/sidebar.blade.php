@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="{{asset('assets/images_login/astrapay_logo.png')}}" alt="" class="nav-icon" style="opacity: .8; margin-left:10px" >
+      <img src="{{asset('assets/images_login/astrapay_logo.png')}}" alt="" class="nav-icon" style="margin-left:10px; width:13rem;">
     </a>
 
     <!-- Sidebar -->

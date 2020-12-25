@@ -1,4 +1,5 @@
 @extends('master-page')
+@section('title','Form Submission')
 
 @section('content')
 <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">

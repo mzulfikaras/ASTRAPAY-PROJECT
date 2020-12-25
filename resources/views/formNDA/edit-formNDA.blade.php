@@ -32,7 +32,7 @@
 
                 <div class="form-group">
                     <label for="bagian">Bagian</label>
-                    <input type="text" class="form-control" id="bagian" name="bagian" value="{{old('bagian', $form_akse->bagian)}}">
+                    <input type="text" class="form-control" id="bagian" name="bagian" value="{{old('bagian', $form_NDA->bagian)}}">
                 </div>
 
                 <div class="form-group">

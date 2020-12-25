@@ -48,6 +48,8 @@
                                         <td>
                                           @if($d->status == 'APPROVAL')
                                             {{$d->updated_at}}
+                                          @else
+                                            <center><h5>- Need Approval -</h5></center>
                                           @endif
                                         </td>
                                         <td>{{$d->nama_pemohon}}</td>

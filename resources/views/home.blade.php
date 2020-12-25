@@ -38,7 +38,7 @@
             <div class="col-10 info-panel">
                 <div class="row justify-content-center ">
                     <div class="col-lg-8">
-                    <h5 id="h5">HALAMAN KARYAWAN PT ASTRA DIGITAL</h5> 
+                    <img src="{{asset('assets/images_login/astrapay_logo.png')}}" alt="" style="width: 35rem"> 
                     </div>
                 </div>
             </div>
