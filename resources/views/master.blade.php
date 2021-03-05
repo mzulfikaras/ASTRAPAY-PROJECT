@@ -19,7 +19,6 @@
   <!-- Custom styles for this template-->
   <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
-  {{-- <link rel="stylesheet" href="{{asset('assets/vendor/adminlte.min.css')}}"> --}}
 
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>

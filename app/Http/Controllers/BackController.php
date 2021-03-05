@@ -141,7 +141,7 @@ class BackController extends Controller
         return $form_NDA->stream();
     }
 
-    
+
     public function importAkses(Request $request){
         $this->validate($request, [
             'file' => 'required|mimes:csv,xls,xlsx,ods',

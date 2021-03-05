@@ -42,7 +42,6 @@
           <a class="collapse-item" href="{{route('form-backup.index')}}">Request FORM BACKUP</a>
           <a class="collapse-item" href="{{route('form-akses-khusus.index')}}">FORM AKSES KHUSUS</a>
           <a class="collapse-item" href="{{route('form-NDA.index')}}">Request FORM NDA</a>
-          {{-- <a class="collapse-item" href="{{route('sistem.index')}}">Request SISTEM</a> --}}
           <div class="collapse-divider"></div>
           <h6 class="collapse-header">Done Pages:</h6>
           <a class="collapse-item" href="{{route('formAkses.done')}}">Done FORM AKSES</a>
